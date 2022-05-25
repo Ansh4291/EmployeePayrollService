@@ -1,5 +1,9 @@
 package com.bridgelabz;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -23,9 +27,9 @@ public class EmployeePayrollService {
 
         Scanner sc = new Scanner(System.in);
 
-            int id;
-            String name;
-            int Salary;
+        int id;
+        String name;
+        int Salary;
         System.out.println("Enter the Employee id :- " );
         id = sc.nextInt();
         System.out.println("Enter the Employee Name :- ");
@@ -33,10 +37,19 @@ public class EmployeePayrollService {
         System.out.println("Enter the Employee Salary :- ");
         Salary = sc.nextInt();
         employeePayrollList.add(new EmployeePayrollData(id,name,Salary));
+        AddDataToFile(employeePayrollList);
     }
     //      Create the Write Employee payroll Data Method and passing the message and print employeePayrolllist
     public void writeEmployeepayrollData(){
         System.out.println("\nWriting Employee Payroll Service in Console" + employeePayrollList );
+    }
+    public void AddDataToFile(List<EmployeePayrollData> employeeData){
+        File file = new File("//home//asus//IdeaProjects//EmployeePayrollService//src//Test.txt");
+        try(BufferedWriter bufferedWriter=new BufferedWriter(new FileWriter(file,true))){
+            bufferedWriter.write(String.valueOf(employeeData));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
     public static void main(String[] args) {
         System.out.println("Welcome to Employee Payroll Service project :-) ");
