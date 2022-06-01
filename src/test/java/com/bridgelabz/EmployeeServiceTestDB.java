@@ -11,10 +11,10 @@ public class EmployeeServiceTestDB {
     @Test
 
     public void givenEmployeeWhenWrittenToFileShouldMatchEmployeeEntries() {
-        com.bridgelabz_JDBC.EmployeePayrollData[] employeePayrollData = {
-                new com.bridgelabz_JDBC.EmployeePayrollData(101, "Anshul Rathore", 30000, "11 - 02-2022"),
-                new com.bridgelabz_JDBC.EmployeePayrollData(102, "Deepesh", 20000, "01 -01 -2020"),
-                new com.bridgelabz_JDBC.EmployeePayrollData(103, "Animesh", 25000, "20 -01 -2021")};
+        EmployeePayrollData[] employeePayrollData = {
+                new EmployeePayrollData(101, "Anshul Rathore", 30000, "11 - 02-2022"),
+                new EmployeePayrollData(102, "Deepesh", 20000, "01 -01 -2020"),
+                new EmployeePayrollData(103, "Animesh", 25000, "20 -01 -2021")};
         EmployeePayrollFileIOService.writeData(List.of(employeePayrollData));
         employeePayrollService.printData(EmployeePayrollService.EnumIOService.FILE_IO);
         employeePayrollService.countEntries(EmployeePayrollService.EnumIOService.FILE_IO);

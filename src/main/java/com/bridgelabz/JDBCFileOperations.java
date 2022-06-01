@@ -1,9 +1,8 @@
 package com.bridgelabz;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class JDBCFileOperations {
  public static String jdbcURL = "jdbc:mysql://localhost:3306/payroll_service?useSSL=false";
@@ -20,7 +19,7 @@ public class JDBCFileOperations {
                     +"salary VARCHAR(15) ,"
                     +"StartDate VARCHAR(50))";
             statement.executeUpdate(sqlQuery);
-            System.out.println("************Table is now created for given query***************");
+            System.out.println("***esult set of a database query*********Table is now created for given query***************");
 
             return true;
 
@@ -43,5 +42,25 @@ public class JDBCFileOperations {
             ex.printStackTrace();
         }
         return true;
+    }
+    public List<EmployeePayrollData> SelectData(){
+        String sqlQuery = "SELECT * FROM employee_payroll_Service";
+        List<EmployeePayrollData> employeePayrollDataList = new ArrayList<>();
+        try
+            (Connection connection =DriverManager.getConnection(jdbcURL , userName, password);
+            Statement statement = connection.createStatement()
+        ){
+            ResultSet resultSet=statement.executeQuery(sqlQuery);
+            while (resultSet.next()){
+                int id = resultSet.getInt("id");
+                String name = resultSet.getString("name");
+                int salary = resultSet.getInt("salary");
+                String startdate = resultSet.getString("startdate");
+                employeePayrollDataList.add(new EmployeePayrollData(id , name , salary , startdate));
+            }
+        }catch (SQLException ex){
+            throw new RuntimeException(ex);
+        }
+           return employeePayrollDataList;
     }
 }

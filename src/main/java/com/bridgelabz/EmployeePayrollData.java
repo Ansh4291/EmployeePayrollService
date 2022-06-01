@@ -1,6 +1,4 @@
-package com.bridgelabz_JDBC;
-
-import java.time.LocalDate;
+package com.bridgelabz;
 
 public class EmployeePayrollData {
     public int id;

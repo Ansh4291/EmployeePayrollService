@@ -20,7 +20,7 @@ public class EmployeePayrollFileIOService {
             e.printStackTrace();
         }
     }
-    public static void writeData(List<com.bridgelabz_JDBC.EmployeePayrollData> employeePayrollList) {
+    public static void writeData(List<EmployeePayrollData> employeePayrollList) {
         StringBuffer buffer = new StringBuffer();
         employeePayrollList.forEach(employee -> {
             String employeeDataString = employee.toString().concat("\n");

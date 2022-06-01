@@ -10,7 +10,7 @@ import java.util.List;
 
 public class EmployeePayrollServiceTest {
     EmployeePayrollFileIOService employeePayrollFileIOService = new EmployeePayrollFileIOService();
-     public List<com.bridgelabz_JDBC.EmployeePayrollData> employeePayrollData;
+     public List<EmployeePayrollData> employeePayrollData;
      public static JDBCFileOperations jdbcFileOperations = new JDBCFileOperations();
     @Test
     public void checkFileCreatedOrNot(){
@@ -28,6 +28,8 @@ public class EmployeePayrollServiceTest {
     public void displayFileFromDirectory(){
         Assertions.assertTrue(employeePayrollFileIOService.ListOfAllFilesAndDirectory());
     }
+
+
     @Test
     public void giveDataToCreateTable_IntoDatabase(){
 
@@ -35,8 +37,16 @@ public class EmployeePayrollServiceTest {
         Assertions.assertTrue(true);
     }
     @Test
-    public void givendataToInsertTable_IntoDatabase(){
+    public void givenDataToInsertTable_IntoDatabase(){
         boolean exp1 = jdbcFileOperations.Insert();
         Assertions.assertTrue(true);
+    }
+    @Test
+    public void givenDataToRetriveDataFromTable_Database(){
+        List<EmployeePayrollData> empData = jdbcFileOperations.SelectData();
+        for (EmployeePayrollData empData1 : empData){
+            System.out.println("Data will be retrived :- " + empData1);
+        }
+        Assertions.assertEquals(1, empData.size());
     }
 }

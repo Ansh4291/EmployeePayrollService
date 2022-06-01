@@ -6,16 +6,16 @@ import java.util.Scanner;
 
 public class EmployeePayrollService {
     public enum EnumIOService {
-        FILE_IO, CONSOLE_IO, DB_IO;
+        FILE_IO, CONSOLE_IO
     }
 
-    public List<com.bridgelabz_JDBC.EmployeePayrollData> employeePayrollList;
+    public List<EmployeePayrollData> employeePayrollList;
     static Scanner sc = new Scanner(System.in);
 
     /**
      * Declared Constructor To Initialize Class Object
      */
-    public EmployeePayrollService(List<com.bridgelabz_JDBC.EmployeePayrollData> employeePayrollList) {
+    public EmployeePayrollService(List<EmployeePayrollData> employeePayrollList) {
         this.employeePayrollList = employeePayrollList;
     }
     /**---Method To Read Employee Payroll Data---*/
@@ -48,7 +48,7 @@ public class EmployeePayrollService {
 
         public static void main(String[]args){
             System.out.println("Welcome to the Employee Payroll service JDBC :-) ");
-            ArrayList<com.bridgelabz_JDBC.EmployeePayrollData> employeepayrollList = new ArrayList<>();
+            ArrayList<EmployeePayrollData> employeepayrollList = new ArrayList<>();
             // taking the object of main class and calling the read and write method into main method
             EmployeePayrollService employeePayrollService = new EmployeePayrollService(employeepayrollList);
             Scanner sc = new Scanner(System.in);
