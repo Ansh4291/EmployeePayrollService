@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class EmployeePayrollService {
     public enum EnumIOService {
-        FILE_IO, CONSOLE_IO
+        FILE_IO, CONSOLE_IO, DB_IO;
     }
 
     public List<com.bridgelabz_JDBC.EmployeePayrollData> employeePayrollList;
@@ -55,10 +55,7 @@ public class EmployeePayrollService {
             //Function Calling
             employeePayrollService.readEmployeePayRollData(EnumIOService.CONSOLE_IO);
             employeePayrollService.writeEmployeePayrollData(EnumIOService.FILE_IO);
-
-
         }
-
     public static void printData(EnumIOService enumIOService) {
         if (enumIOService.equals(EnumIOService.FILE_IO))
             new EmployeePayrollFileIOService().printData();

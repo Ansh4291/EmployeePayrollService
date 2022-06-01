@@ -10,9 +10,9 @@ public class EmployeePayrollFileIOService {
     public static void readData() {
         try {
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream(Test)));
-            String line;
-            while ((line = bufferedReader.readLine()) != null) {
-                System.out.println(line);
+            String data;
+            while ((data = bufferedReader.readLine()) != null) {
+                System.out.println(data);
             }
             bufferedReader.close();
         } catch (IOException e) {

@@ -3,8 +3,8 @@ package com.bridgelabz;
 import java.io.File;
 
 public class FilesUtils {
-    public static boolean deleteFiles(File contentToDelete) {
-        File[] allData = contentToDelete.listFiles();
+    public static boolean deleteFiles(File contentAreDelete) {
+        File[] allData = contentAreDelete.listFiles();
         if (allData != null)
         {
             for (File file : allData)
@@ -12,6 +12,6 @@ public class FilesUtils {
                 deleteFiles(file);
             }
         }
-        return contentToDelete.delete();
+        return contentAreDelete.delete();
     }
 }

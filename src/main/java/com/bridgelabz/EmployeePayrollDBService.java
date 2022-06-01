@@ -1,5 +1,5 @@
-package com.bridgelabz_JDBC;
-
+//package com.bridgelabz;
+//
 //import java.sql.*;
 //import java.time.LocalDate;
 //import java.util.ArrayList;
