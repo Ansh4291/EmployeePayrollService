@@ -32,7 +32,7 @@ public class JDBCFileOperations {
         try (Connection connection =DriverManager.getConnection(jdbcURL , userName, password);
              Statement statement = connection.createStatement()
         ) {
-            String sqlQuery = "INSERT INTO employee_payroll_Service VALUES (121 , 'Lucky' , '15000' , '01-01-2021')";
+            String sqlQuery = "INSERT INTO employee_payroll_Service VALUES (121 , 'Lucky' , '15000' , '01-01-2021'),(212 , 'Rahul' , '21000' , '01-02-2022')";
 
             statement.executeUpdate(sqlQuery);
             System.out.println("***************Inserted data is updated now ***********");
@@ -62,5 +62,23 @@ public class JDBCFileOperations {
             throw new RuntimeException(ex);
         }
            return employeePayrollDataList;
+    }
+
+    public boolean selectDataUsingWhereTo(){
+        String sqlQuery = "SELECT * FROM employee_payroll_Service WHERE startDate BETWEEN CAST('01-01-2020' AS DATE) AND DATE(NOW())";
+        try (Connection connection =DriverManager.getConnection(jdbcURL , userName, password);
+             Statement statement = connection.createStatement()
+        ) {
+            ResultSet resultSet1 = statement.executeQuery(sqlQuery);
+            while (resultSet1.next()){
+                int colNo = resultSet1.getMetaData().getColumnCount();
+                for (int i = 0; i <= colNo; i++){
+                    System.out.println("Coloumn is :- " + i + " = " + resultSet1.getObject(i));
+                }
+            }
+        }catch (SQLException ex){
+            throw new RuntimeException(ex);
+        }
+        return true;
     }
 }

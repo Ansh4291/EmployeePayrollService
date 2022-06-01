@@ -1,4 +1,4 @@
-package com.bridgelabz_JDBC;
+package com.bridgelabz;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

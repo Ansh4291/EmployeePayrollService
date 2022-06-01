@@ -49,4 +49,10 @@ public class EmployeePayrollServiceTest {
         }
         Assertions.assertEquals(1, empData.size());
     }
+    @Test
+    public void givenData_Particulardata_RangeFromThe_Database(){
+        boolean exp2 = jdbcFileOperations.selectDataUsingWhereTo();
+        Assertions.assertTrue(true);
+    }
+
 }
