@@ -1,4 +1,4 @@
-package com.bridgelabz;
+package com.bridgelabz_JDBC;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -22,7 +22,7 @@ public class NIoFileAPITest {
 
         //Delete File and check File not exists
         Path playPath = Paths.get(HOME + "/" + PLAY_WITH_NOI);
-        if (Files.exists(playPath)) FilesUtils.deleteFiles(playPath.toFile());
+        if (Files.exists(playPath)) com.bridgelabz.FilesUtils.deleteFiles(playPath.toFile());
         Assertions.assertTrue(Files.notExists(playPath));
 
         //Create Directory

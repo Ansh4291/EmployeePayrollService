@@ -1,9 +1,39 @@
 package com.bridgelabz;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.List;
 
 public class EmployeePayrollFileIOService {
+    public static String Test="Test.txt";
+    public static void readData() {
+        try {
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream(Test)));
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                System.out.println(line);
+            }
+            bufferedReader.close();
+        } catch (IOException e) {
+            System.out.println("ERROR: unable to read file " + Test);
+            e.printStackTrace();
+        }
+    }
+    public static void writeData(List<com.bridgelabz_JDBC.EmployeePayrollData> employeePayrollList) {
+        StringBuffer buffer = new StringBuffer();
+        employeePayrollList.forEach(employee -> {
+            String employeeDataString = employee.toString().concat("\n");
+            buffer.append(employeeDataString);
+        });
+        try {
+            Files.write(Paths.get(Test), buffer.toString().getBytes());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
     /**---Method To Create New File to particular Directory---
      */
     public boolean createFile(){
@@ -21,6 +51,7 @@ public class EmployeePayrollFileIOService {
             return false;
         }
     }
+
     /**---Method to Check file is Already exist or Not---
      */
     public boolean checkFileExistOrNot(){
@@ -55,7 +86,7 @@ public class EmployeePayrollFileIOService {
     /**---Method to List All the Files and Directories---
      */
     public boolean ListOfAllFilesAndDirectory(){
-        File file = new File("//home//asus//IdeaProjects//EmployeePayrollService//src");
+        File file = new File("//home//asus//IdeaProjects//EmployeePayinsert into employee_payroll(name,salary,start)VALUES('Bill',1000000.00,'2010-10-30'),('Tersia',2000000.00,'2019-11-13'),('Charlie',300000.00,'2020-05-21')rollService//src");
         File [] files;
         String [] FilesNames;
         files = file.listFiles();
@@ -76,5 +107,25 @@ public class EmployeePayrollFileIOService {
             }
             return true;
         }
+    }
+
+
+    public static void printData() {
+        try {
+            Files.lines(new File("Test.txt").toPath())
+                    .forEach(System.out::println);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public long countEntries() {
+        long entries = 0;
+        try {
+            entries = Files.lines(new File("Test.txt").toPath()).count();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return entries;
     }
 }

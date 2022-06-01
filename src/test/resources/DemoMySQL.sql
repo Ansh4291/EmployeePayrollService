@@ -23,7 +23,8 @@ mysql> select database();
 | database()       |
 +------------------+
 | payroll_services |
-+------------------+
++------------------+SELECT*FROM employee_payroll;
+
 1 row in set (0.00 sec)
 
                         *****************************UC2********************************
