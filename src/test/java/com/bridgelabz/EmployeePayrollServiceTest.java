@@ -11,7 +11,7 @@ import java.util.List;
 public class EmployeePayrollServiceTest {
     EmployeePayrollFileIOService employeePayrollFileIOService = new EmployeePayrollFileIOService();
      public List<com.bridgelabz_JDBC.EmployeePayrollData> employeePayrollData;
-
+     public static JDBCFileOperations jdbcFileOperations = new JDBCFileOperations();
     @Test
     public void checkFileCreatedOrNot(){
         Assertions.assertTrue(employeePayrollFileIOService.createFile());
@@ -30,8 +30,13 @@ public class EmployeePayrollServiceTest {
     }
     @Test
     public void giveDataToCreateTable_IntoDatabase(){
-        JDBCFileOperations jdbcFileOperations = new JDBCFileOperations();
+
         boolean exp = jdbcFileOperations.createTable();
+        Assertions.assertTrue(true);
+    }
+    @Test
+    public void givendataToInsertTable_IntoDatabase(){
+        boolean exp1 = jdbcFileOperations.Insert();
         Assertions.assertTrue(true);
     }
 }

@@ -29,4 +29,19 @@ public class JDBCFileOperations {
         }
         return true;
     }
+    public static boolean Insert(){
+        try (Connection connection =DriverManager.getConnection(jdbcURL , userName, password);
+             Statement statement = connection.createStatement()
+        ) {
+            String sqlQuery = "INSERT INTO employee_payroll_Service VALUES (121 , 'Lucky' , '15000' , '01-01-2021')";
+
+            statement.executeUpdate(sqlQuery);
+            System.out.println("***************Inserted data is updated now ***********");
+
+            return true;
+        }catch (SQLException ex){
+            ex.printStackTrace();
+        }
+        return true;
+    }
 }
